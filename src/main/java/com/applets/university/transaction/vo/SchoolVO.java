@@ -1,5 +1,6 @@
 package com.applets.university.transaction.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -7,10 +8,12 @@ import lombok.Data;
  * @date 2021/8/2
  */
 @Data
-public class SchoolVo {
+public class SchoolVO {
 
+    @ApiModelProperty(value = "学校ID")
     private Long id;
 
+    @ApiModelProperty(value = "学校名称")
     private String name;
 
 }
