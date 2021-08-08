@@ -14,3 +14,5 @@ mybatis-plus:
 
 swagger:
    enable: true
+file:
+  baseDir: F:\workspace\image

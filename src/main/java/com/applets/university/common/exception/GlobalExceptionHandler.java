@@ -19,4 +19,9 @@ public class GlobalExceptionHandler {
         return AjaxResult.failed(e.getMessage());
     }
 
+    @ExceptionHandler(value = Exception.class)
+    public AjaxResult exceptionHandler(Exception e) {
+        return AjaxResult.failed("系统异常");
+    }
+
 }

@@ -1,11 +1,9 @@
 package com.applets.university.common.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @auther 85028
@@ -14,19 +12,20 @@ import java.time.LocalDate;
 @Data
 public class BaseEntity {
 
-    private Long id;
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     @TableField(fill = FieldFill.INSERT)
-    private Long createBy;
+    private String createBy;
 
     @TableField(fill = FieldFill.INSERT)
-    private LocalDate createTime;
+    private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateBy;
+    private String updateBy;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDate updateTime;
+    private LocalDateTime updateTime;
 
     @TableLogic
     @TableField("is_deleted")

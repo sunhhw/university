@@ -19,14 +19,14 @@ public class MybatisPlusHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("createBy", 123L, metaObject);
-        this.setFieldValByName("updateBy", 456L, metaObject);
+        this.setFieldValByName("createBy", "123", metaObject);
+        this.setFieldValByName("updateBy", "456", metaObject);
         this.setFieldValByName("deleted", 0, metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         this.setFieldValByName("updateTime", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("updateBy", 456L, metaObject);
+        this.setFieldValByName("updateBy", "456", metaObject);
     }
 }

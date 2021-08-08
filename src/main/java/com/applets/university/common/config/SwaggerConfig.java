@@ -28,7 +28,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @ConditionalOnProperty(name = "swagger.enable", havingValue = "true")
 public class SwaggerConfig implements InitializingBean {
     /** 各服务的名称和说明 */
-    private String[] services = {"transaction-二手交易"};
+    private String[] services = {"trade-二手交易"};
 
     @Autowired
     private ApplicationContext applicationContext;

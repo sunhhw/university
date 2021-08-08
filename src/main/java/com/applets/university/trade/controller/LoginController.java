@@ -1,10 +1,10 @@
-package com.applets.university.transaction.controller;
+package com.applets.university.trade.controller;
 
 
 import cn.hutool.json.JSON;
 import com.applets.university.common.api.AjaxResult;
-import com.applets.university.transaction.entity.WxUser;
-import com.applets.university.transaction.service.ILoginService;
+import com.applets.university.trade.entity.WxUser;
+import com.applets.university.trade.service.ILoginService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

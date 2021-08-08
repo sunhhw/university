@@ -1,7 +1,7 @@
-package com.applets.university.transaction.service;
+package com.applets.university.trade.service;
 
 import cn.hutool.json.JSON;
-import com.applets.university.transaction.entity.WxUser;
+import com.applets.university.trade.entity.WxUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

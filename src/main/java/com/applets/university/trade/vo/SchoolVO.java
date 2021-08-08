@@ -1,4 +1,4 @@
-package com.applets.university.transaction.vo;
+package com.applets.university.trade.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

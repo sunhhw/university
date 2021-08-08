@@ -1,11 +1,11 @@
-package com.applets.university.transaction.service.impl;
+package com.applets.university.trade.service.impl;
 
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
-import com.applets.university.transaction.entity.WxUser;
-import com.applets.university.transaction.mapper.LoginMapper;
-import com.applets.university.transaction.service.ILoginService;
+import com.applets.university.trade.entity.WxUser;
+import com.applets.university.trade.mapper.LoginMapper;
+import com.applets.university.trade.service.ILoginService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

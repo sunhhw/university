@@ -1,6 +1,6 @@
-package com.applets.university.transaction.mapper;
+package com.applets.university.trade.mapper;
 
-import com.applets.university.transaction.entity.WxUser;
+import com.applets.university.trade.entity.WxUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

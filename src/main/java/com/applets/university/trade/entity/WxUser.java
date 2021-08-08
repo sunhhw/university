@@ -1,4 +1,4 @@
-package com.applets.university.transaction.entity;
+package com.applets.university.trade.entity;
 
 import com.applets.university.common.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
