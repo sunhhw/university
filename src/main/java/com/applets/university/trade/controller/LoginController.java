@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/login")
-@Api("登录接口")
+@Api(tags = "登录接口")
 public class LoginController {
 
     @Autowired

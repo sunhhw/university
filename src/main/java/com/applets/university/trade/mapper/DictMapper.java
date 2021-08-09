@@ -1,6 +1,6 @@
 package com.applets.university.trade.mapper;
 
-import com.applets.university.trade.entity.Image;
+import com.applets.university.trade.entity.Dict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author shw
- * @since 2021-08-08
+ * @since 2021-08-09
  */
-public interface ImageMapper extends BaseMapper<Image> {
+public interface DictMapper extends BaseMapper<Dict> {
 
 }
