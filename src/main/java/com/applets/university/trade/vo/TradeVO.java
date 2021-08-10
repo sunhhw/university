@@ -8,12 +8,12 @@ import lombok.Data;
  * @date 2021/8/9
  */
 @Data
-public class TradeVo {
+public class TradeVO {
 
     private Integer id;
 
     @ApiModelProperty(value = "分类")
-    private String type;
+    private String category;
 
     @ApiModelProperty(value = "详情")
     private String detail;
@@ -29,6 +29,15 @@ public class TradeVo {
 
     @ApiModelProperty(value = "封面图片")
     private String coverPath;
+
+    @ApiModelProperty(value = "学校名称")
+    private String schoolName;
+
+    @ApiModelProperty("发布者昵称")
+    private String nickName;
+
+    @ApiModelProperty("头像")
+    private String avatarUrl;
 
 
 }

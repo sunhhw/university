@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2021/8/9
  */
 @Data
-public class DictVo {
+public class DictVO {
 
     @ApiModelProperty(value = "字典名称")
     private String name;

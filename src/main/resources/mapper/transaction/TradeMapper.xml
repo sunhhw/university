@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.applets.university.trade.mapper.TransactionMapper">
+<mapper namespace="com.applets.university.trade.mapper.TradeMapper">
 
+    <select id="listTrade" resultType="com.applets.university.trade.vo.TradeVO">
+        SELECT t.id,
+        t.original_price as originalPrice,
+        t.price,
+        t.detail,
+        i.path as coverPath,
+        s.`name` as schoolName,
+        d.`name` as fineness,
+        di.`name` as category,
+        w.avatar_url as avatarUrl,
+        w.nick_name as nickName
+        FROM trade t,
+        school s,
+        image i,
+        dict d,
+        dict di,
+        wx_user w
+        WHERE t.id = i.activity_id
+        AND t.school_id = s.id
+        AND t.fineness_id = d.`code`
+        AND t.open_id = w.id
+        AND d.type = #{fineness}
+        AND t.category_id = di.`code`
+        AND di.type = #{category}
+        AND i.module = #{module}
+        AND i.is_cover = 1
+        AND t.is_deleted = 0
+        AND i.is_deleted = 0
+        AND s.is_deleted = 0
+        AND w.is_deleted = 0
+        <if test="schoolId != null">
+            AND s.id = #{schoolId}
+        </if>
+        <if test="keyWord != null and keyWord != '' ">
+            AND t.detail like CONCAT('%', #{keyWord}, '%')
+        </if>
+        LIMIT #{pageNum},#{pageSize}
+    </select>
 </mapper>

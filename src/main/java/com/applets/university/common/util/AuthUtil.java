@@ -7,7 +7,7 @@ package com.applets.university.common.util;
 public class AuthUtil {
 
     public static String getOpenId() {
-        return "123";
+        return "1";
     }
 
 

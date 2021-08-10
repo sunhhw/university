@@ -22,7 +22,7 @@ public class Trade extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "分类")
-    private Integer typeId;
+    private Integer categoryId;
 
     @ApiModelProperty(value = "详情")
     private String detail;
@@ -39,8 +39,11 @@ public class Trade extends BaseEntity {
     @ApiModelProperty(value = "0下架，1上架")
     private Integer status;
 
-    @ApiModelProperty(value = "成色ID")
+    @ApiModelProperty(value = "成色id")
     private Integer finenessId;
+
+    @ApiModelProperty(value = "学校id")
+    private Integer schoolId;
 
 
 }

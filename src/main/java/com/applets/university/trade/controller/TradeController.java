@@ -5,21 +5,20 @@ import com.applets.university.common.constant.ModuleConstant;
 import com.applets.university.common.util.AuthUtil;
 import com.applets.university.common.util.FileUploadUtil;
 import com.applets.university.trade.converter.TradeConverter;
+import com.applets.university.trade.dto.TradeParamDto;
 import com.applets.university.trade.entity.Image;
 import com.applets.university.trade.entity.Trade;
 import com.applets.university.trade.service.IImageService;
 import com.applets.university.trade.service.ITradeService;
+import com.applets.university.trade.vo.TradeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -38,20 +37,22 @@ public class TradeController {
     @Autowired
     private IImageService tradeImageService;
 
-    @PostMapping("")
+    @PostMapping
     @ApiOperation("发布")
     @Transactional(rollbackFor = Exception.class)
+    @ApiParam(name = "file", required = true, type = "图片")
     public AjaxResult release(@RequestParam("file") List<MultipartFile> file,
-                              @RequestParam("typeId") Integer typeId,
+                              @RequestParam("categoryId") Integer categoryId,
                               @RequestParam("detail") String detail,
                               @RequestParam("price") Double price,
                               @RequestParam("originalPrice") Double originalPrice,
-                              @RequestParam("finenessId") Integer finenessId) throws IOException {
+                              @RequestParam("finenessId") Integer finenessId,
+                              @RequestParam("schoolId") Integer schoolId) {
         // 1. 获取用户openId
         String openId = AuthUtil.getOpenId();
         // 2. 上传发布信息
         Integer status = 1;
-        Trade trade = TradeConverter.INSTANCE.toTrade(typeId, detail, openId, price, originalPrice, status, finenessId);
+        Trade trade = TradeConverter.INSTANCE.toTrade(categoryId, detail, openId, price, originalPrice, status, finenessId, schoolId);
         boolean isSuccess = tradeService.save(trade);
         if (!isSuccess) {
             return AjaxResult.failed("发布失败，请稍后再试！");
@@ -74,6 +75,13 @@ public class TradeController {
         }
 
         return AjaxResult.success();
+    }
+
+    @GetMapping
+    @ApiOperation("遍历所有商品")
+    public AjaxResult listTrade(@RequestBody TradeParamDto param) {
+        List<TradeVO> tradeVOList = tradeService.listTrade(param);
+        return AjaxResult.success(tradeVOList);
     }
 
 

@@ -7,7 +7,7 @@ import com.applets.university.common.entity.BaseEntity;
 import com.applets.university.trade.converter.TradeConverter;
 import com.applets.university.trade.entity.Dict;
 import com.applets.university.trade.service.IDictService;
-import com.applets.university.trade.vo.DictVo;
+import com.applets.university.trade.vo.DictVO;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,11 +42,11 @@ public class DictController {
                 .eq(BaseEntity::getDeleted, 0)
                 .groupBy(Dict::getSort);
         List<Dict> list = dictService.list(wrapper);
-        List<DictVo> dictVoList = TradeConverter.INSTANCE.toDictVoList(list);
-        return AjaxResult.success(dictVoList);
+        List<DictVO> dictVOList = TradeConverter.INSTANCE.toDictVoList(list);
+        return AjaxResult.success(dictVOList);
     }
 
-    @GetMapping("/type")
+    @GetMapping("/category")
     @ApiOperation("遍历商品类型")
     public AjaxResult listType() {
         LambdaQueryWrapper<Dict> wrapper = new LambdaQueryWrapper<Dict>()
@@ -54,8 +54,8 @@ public class DictController {
                 .eq(BaseEntity::getDeleted, 0)
                 .groupBy(Dict::getSort);
         List<Dict> list = dictService.list(wrapper);
-        List<DictVo> dictVoList = TradeConverter.INSTANCE.toDictVoList(list);
-        return AjaxResult.success(dictVoList);
+        List<DictVO> dictVOList = TradeConverter.INSTANCE.toDictVoList(list);
+        return AjaxResult.success(dictVOList);
     }
 
 
