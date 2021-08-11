@@ -1,8 +1,8 @@
 package com.applets.university.trade.converter;
 
-import com.applets.university.trade.entity.Dict;
-import com.applets.university.trade.entity.Image;
-import com.applets.university.trade.entity.Trade;
+import com.applets.university.trade.dto.CommentParamDto;
+import com.applets.university.trade.dto.ReplyParamDto;
+import com.applets.university.trade.entity.*;
 import com.applets.university.trade.vo.DictVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -35,15 +35,21 @@ public interface TradeConverter {
                   Double originalPrice, Integer status, Integer finenessId, Integer schoolId);
 
     @Mappings({
-            @Mapping(target = "activityId", source = "activityId"),
+            @Mapping(target = "dynamicId", source = "dynamicId"),
             @Mapping(target = "path", source = "path"),
             @Mapping(target = "cover", source = "cover"),
             @Mapping(target = "module", source = "module")
     }
     )
-    Image toImage(Integer activityId, String path, Integer cover, String module);
+    Image toImage(Integer dynamicId, String path, Integer cover, String module);
 
 
     List<DictVO> toDictVoList(List<Dict> dictList);
+
+    @Mapping(target = "openId", source = "openId")
+    Comment toComment(CommentParamDto paramDto,String openId);
+
+    @Mapping(target = "openId", source = "openId")
+    Reply toReply(ReplyParamDto paramDto, String openId);
 
 }

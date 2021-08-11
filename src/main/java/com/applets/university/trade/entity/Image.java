@@ -25,8 +25,8 @@ public class Image extends BaseEntity {
     @ApiModelProperty(value = "图片路径")
     private String path;
 
-    @ApiModelProperty(value = "活动id")
-    private Integer activityId;
+    @ApiModelProperty(value = "动态id")
+    private Integer dynamicId;
 
     @ApiModelProperty(value = "是否为封面，1是，0否")
     @TableField("is_cover")
