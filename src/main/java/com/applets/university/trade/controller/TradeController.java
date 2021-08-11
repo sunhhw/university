@@ -10,16 +10,17 @@ import com.applets.university.trade.entity.Image;
 import com.applets.university.trade.entity.Trade;
 import com.applets.university.trade.service.IImageService;
 import com.applets.university.trade.service.ITradeService;
+import com.applets.university.trade.vo.TradeInfoVO;
 import com.applets.university.trade.vo.TradeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @auther shw
@@ -40,8 +41,7 @@ public class TradeController {
     @PostMapping
     @ApiOperation("发布")
     @Transactional(rollbackFor = Exception.class)
-    @ApiParam(name = "file", required = true, type = "图片")
-    public AjaxResult release(@RequestParam("file") List<MultipartFile> file,
+    public AjaxResult release(@RequestParam("files") List<MultipartFile> files,
                               @RequestParam("categoryId") Integer categoryId,
                               @RequestParam("detail") String detail,
                               @RequestParam("price") Double price,
@@ -59,16 +59,16 @@ public class TradeController {
         }
 
         // 限制不可超过5张照片
-        if (file.size() > 5) {
+        if (files.size() > 5) {
             return AjaxResult.failed("图片不可超过5张");
         }
 
         // 3. 上传图片信息
-        for (int i = 0; i < file.size(); i++) {
+        for (int i = 0; i < files.size(); i++) {
             // 文件上传
             // 默认第一张为封面
             int cover = i == 0 ? 1 : 0;
-            String path = FileUploadUtil.upload(file.get(i));
+            String path = FileUploadUtil.upload(files.get(i));
             Integer tradeId = trade.getId();
             Image image = TradeConverter.INSTANCE.toImage(tradeId, path, cover, ModuleConstant.TRADE);
             tradeImageService.save(image);
@@ -84,5 +84,19 @@ public class TradeController {
         return AjaxResult.success(tradeVOList);
     }
 
+    @GetMapping("/{id}")
+    @ApiOperation("商品详情")
+    public AjaxResult getTradeInfo(@PathVariable("id") Integer id) {
+        // 给该商品的浏览量+1
+        Trade trade = tradeService.getById(id);
+        if (Objects.isNull(trade)) {
+            return AjaxResult.failed("该商品不存在！");
+        }
+        trade.setViews(trade.getViews() + 1);
+        tradeService.updateById(trade);
+        // 获取商品详情
+        List<TradeInfoVO> tradeVOList = tradeService.getTradeInfo(id);
+        return AjaxResult.success(tradeVOList);
+    }
 
 }

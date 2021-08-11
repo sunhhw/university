@@ -6,6 +6,7 @@ import com.applets.university.trade.dto.TradeParamDto;
 import com.applets.university.trade.entity.Trade;
 import com.applets.university.trade.mapper.TradeMapper;
 import com.applets.university.trade.service.ITradeService;
+import com.applets.university.trade.vo.TradeInfoVO;
 import com.applets.university.trade.vo.TradeVO;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,14 @@ public class TradeServiceImpl extends ServiceImpl<TradeMapper, Trade> implements
         String category = DictConstant.CATEGORY;
         String fineness = DictConstant.FINENESS;
 
-        return tradeMapper.listTrade(pageNum, pageSize, schoolId, keyWord,module,category,fineness);
+        return tradeMapper.listTrade(pageNum, pageSize, schoolId, keyWord, module, category, fineness);
+    }
+
+    @Override
+    public List<TradeInfoVO> getTradeInfo(Integer id) {
+        String module = ModuleConstant.TRADE;
+        String category = DictConstant.CATEGORY;
+        String fineness = DictConstant.FINENESS;
+        return tradeMapper.getTradeInfo(id, module, category, fineness);
     }
 }

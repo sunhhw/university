@@ -39,5 +39,8 @@ public class TradeVO {
     @ApiModelProperty("头像")
     private String avatarUrl;
 
+    @ApiModelProperty("浏览数量")
+    private Integer views;
+
 
 }

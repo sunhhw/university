@@ -45,5 +45,8 @@ public class Trade extends BaseEntity {
     @ApiModelProperty(value = "学校id")
     private Integer schoolId;
 
+    @ApiModelProperty(value = "浏览次数")
+    private Integer views;
+
 
 }

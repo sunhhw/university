@@ -1,6 +1,7 @@
 package com.applets.university.trade.mapper;
 
 import com.applets.university.trade.entity.Trade;
+import com.applets.university.trade.vo.TradeInfoVO;
 import com.applets.university.trade.vo.TradeVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +32,13 @@ public interface TradeMapper extends BaseMapper<Trade> {
                             @Param("schoolId") Integer schoolId, @Param("keyWord") String keyWord,
                             @Param("module") String module, @Param("category") String category,
                             @Param("fineness") String fineness);
+
+    /**
+     * 商品详情
+     *
+     * @param id
+     * @return
+     */
+    List<TradeInfoVO> getTradeInfo(@Param("id") Integer id, @Param("module") String module,
+                                   @Param("category") String category, @Param("fineness") String fineness);
 }
