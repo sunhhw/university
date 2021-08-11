@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value="Trade对象", description="二手交易-发布")
+@ApiModel(value="Trade对象", description="商品详情")
 public class Trade extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

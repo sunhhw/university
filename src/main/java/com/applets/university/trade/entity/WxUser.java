@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value="WxUser对象", description="")
+@ApiModel(value="WxUser对象", description="用户信息")
 public class WxUser extends BaseEntity {
 
     private static final long serialVersionUID = 1L;

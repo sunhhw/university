@@ -1,5 +1,6 @@
 package com.applets.university.trade.vo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date 2021/8/9
  */
 @Data
+@ApiModel(value="Trade对象", description="商品列表")
 public class TradeVO {
 
     private Integer id;

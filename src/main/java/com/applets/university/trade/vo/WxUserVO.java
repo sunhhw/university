@@ -1,5 +1,6 @@
 package com.applets.university.trade.vo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date 2021/8/5
  */
 @Data
+@ApiModel(value="WxUser对象", description="用户信息")
 public class WxUserVO {
 
     @ApiModelProperty(value = "微信昵称")

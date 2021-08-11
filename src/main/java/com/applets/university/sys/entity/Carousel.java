@@ -12,17 +12,23 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author shw
- * @since 2021-08-10
+ * @since 2021-08-11
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value="School对象", description="学校")
-public class School extends BaseEntity {
+@ApiModel(value="Carousel对象", description="轮播图")
+public class Carousel extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "学校名称")
-    private String name;
+    @ApiModelProperty(value = "跳转路径")
+    private String url;
+
+    @ApiModelProperty(value = "图片路径")
+    private String imagePath;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
 
 
 }
